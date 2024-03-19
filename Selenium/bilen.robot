@@ -145,6 +145,9 @@ Slutför bokning
     Click Button    css=#confirm
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 7b4642b04499d59545a5a35964207336e31ff067
+=======
+>>>>>>> main
