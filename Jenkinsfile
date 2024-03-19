@@ -44,18 +44,11 @@ pipeline {
                 }
             }
         }
-
-        stage('Code Coverage') {
+          stage('Publish Test Results') {
             steps {
-                dir('Selenium') {
-                    powershell '''
-                    pip install coverage
-                    pip install robotframework-coverage
-                    coverage run -m robot.run --name "Coverage Test" --outputdir results --logtitle "Coverage Test Logs" bilen.robot
-                    coverage xml -o coverage.xml
-                    '''
-                }
+                junit '**/results/*.xml'
             }
         }
     }
 }
+       
