@@ -143,5 +143,3 @@ Slutför bokning
     Select From List By Label    css=.mediumInputFields[title="Year"]   ${year}
     Input Text    css=#cvc    ${cvc}
     Click Button    css=#confirm
-
-
