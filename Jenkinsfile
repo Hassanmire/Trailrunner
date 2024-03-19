@@ -43,7 +43,12 @@ pipeline {
                     '''
                 }
             }
-        
+        }
+          stage('Publish Test Results') {
+            steps {
+                junit '**/results/*.xml'
+            }
         }
     }
 }
+       

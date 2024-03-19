@@ -31,8 +31,8 @@ Ange datum för bokning
     [Tags]              Datumval
      Open Browser    ${BASE_URL}    chrome
     Logga in    ${USERNAME}    ${PASSWORD}
-    Input Text    id=start    2024-02-28
-    Input Text    id=end    2024-02-29
+    Input Text    id=start    2024-03-28
+    Input Text    id=end    2024-03-29
     Click Button     id=continue
     Page Should Contain Element    css=#questionText    When do you want to make your trip?
     Close Browser
@@ -42,7 +42,7 @@ Välj en bil för bokning
     [Tags]            bilval
      Open Browser    ${BASE_URL}    chrome
     Logga in    ${USERNAME}   ${PASSWORD}
-    Ange datum     2024-02-28   2024-02-29
+    Ange datum     2024-03-28   2024-03-29
     Wait Until Element Is Visible    css=.carRow
     ${row}=  Get WebElement  xpath=//tr[contains(@class, "carRow")]
     Click Button  xpath=//input[@id="bookQ7pass5"]
@@ -54,7 +54,7 @@ Slutför bokning med betalningsinformation
     [Tags]        betalkort inmatning
     Open Browser    ${BASE_URL}    chrome
     Logga in    ${USERNAME}    ${PASSWORD}
-    Ange datum  2024-02-28   2024-02-29
+    Ange datum  2024-03-28   2024-03-29
     Välj bil    //tr[contains(@class, "carRow")]   //input[@id="bookQ7pass5"]
 
     Input Text    css=#cardNum    1234567890123456
@@ -74,7 +74,7 @@ Avboka bil
 
     Open Browser    ${BASE_URL}    chrome
     Logga in    ${USERNAME}    ${PASSWORD}
-    Ange datum    2024-02-28   2024-02-29
+    Ange datum    2024-03-28   2024-03-29
     Välj bil    //tr[contains(@class, "carRow")]   //input[@id="bookQ7pass5"]
 
 
@@ -110,8 +110,8 @@ Negativt testfall: Ogiltiga bokningsdatum
     [Documentation]    Testar att försöka ange ogiltiga datum för bokning
     [Tags]             Negativt_test
     Open Browser       ${BASE_URL}    chrome
-    Input Text         id=start    2024-02-29
-    Input Text         id=end    2024-02-28
+    Input Text         id=start    2024-03-29
+    Input Text         id=end    2024-03-28
     Click Button       id=continue
     Page Should Not Contain Element    css=span.error-message
     Close Browser
@@ -143,4 +143,3 @@ Slutför bokning
     Select From List By Label    css=.mediumInputFields[title="Year"]   ${year}
     Input Text    css=#cvc    ${cvc}
     Click Button    css=#confirm
-
