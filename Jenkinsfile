@@ -44,11 +44,16 @@ pipeline {
                 }
             }
         }
-          stage('Publish Test Results') {
+
+       stage('Code Coverage') {
             steps {
-                junit '**/results/*.xml'
+                dir('Selenium') {
+                    powershell '''
+                    coverage run -m robot.run --outputdir results bilen.robot
+                    coverage xml -o coverage.xml
+                    '''
+                }
             }
         }
     }
 }
-       
