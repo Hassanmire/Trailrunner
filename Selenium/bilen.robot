@@ -29,7 +29,7 @@ Logga in på befintligt konto
 Ange datum för bokning
     [Documentation]    Kunden anger datum för att boka en bil
     [Tags]              Datumval
-     Open Browser    ${BASE_URL}    chrome
+     Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}    ${PASSWORD}
     Input Text    id=start    2024-03-28
     Input Text    id=end    2024-03-29
@@ -40,7 +40,7 @@ Ange datum för bokning
 Välj en bil för bokning
     [Documentation]    Kunden väljer en bil för att slutföra bokningen
     [Tags]            bilval
-     Open Browser    ${BASE_URL}    chrome
+     Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}   ${PASSWORD}
     Ange datum     2024-03-28   2024-03-29
     Wait Until Element Is Visible    css=.carRow
@@ -52,7 +52,7 @@ Välj en bil för bokning
 Slutför bokning med betalningsinformation
     [Documentation]    Kunden fyller i betalningsinformationen för att slutföra bokningen
     [Tags]        betalkort inmatning
-    Open Browser    ${BASE_URL}    chrome
+    Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}    ${PASSWORD}
     Ange datum  2024-03-28   2024-03-29
     Välj bil    //tr[contains(@class, "carRow")]   //input[@id="bookQ7pass5"]
@@ -72,7 +72,7 @@ Avboka bil
     [Documentation]    Kunden avbokar en bil
     [Tags]            avbokning
 
-    Open Browser    ${BASE_URL}    chrome
+    Open Browser    ${BASE_URL}    headlesschrome
     Logga in    ${USERNAME}    ${PASSWORD}
     Ange datum    2024-03-28   2024-03-29
     Välj bil    //tr[contains(@class, "carRow")]   //input[@id="bookQ7pass5"]
@@ -88,7 +88,7 @@ Logga ut från kontot
     [Documentation]    Kunden slutför bokningen och loggar ut från kontot
     [Tags]            utlogning
 
-     Open Browser    ${BASE_URL}    chrome
+     Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}    ${PASSWORD}
 
     Click Button    id=logout
@@ -99,7 +99,7 @@ Logga ut från kontot
 Negativt testfall: Ogiltiga inloggningsuppgifter
     [Documentation]    Testar inloggning med ogiltiga uppgifter
     [Tags]            Negativt_test
-    Open Browser    ${BASE_URL}    chrome
+    Open Browser    ${BASE_URL}    headlesschrome
     Input Text    id=email    ogiltig@hassan.com
     Input Text    id=password    355336
     Click Button    id=login
@@ -109,7 +109,7 @@ Negativt testfall: Ogiltiga inloggningsuppgifter
 Negativt testfall: Ogiltiga bokningsdatum
     [Documentation]    Testar att försöka ange ogiltiga datum för bokning
     [Tags]             Negativt_test
-    Open Browser       ${BASE_URL}    chrome
+    Open Browser       ${BASE_URL}    headlesschrome
     Input Text         id=start    2024-03-29
     Input Text         id=end    2024-03-28
     Click Button       id=continue
