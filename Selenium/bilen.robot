@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Navigationsflödet för att boka en bil
 Library           SeleniumLibrary
-Suite Setup       Open Browser    ${BASE_URL}    chrome
+Suite Setup       Open Browser    ${BASE_URL}    headlesschrome
 Suite Teardown    Close All Browsers
 
 *** Variables ***
