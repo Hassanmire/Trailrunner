@@ -52,8 +52,3 @@ pipeline {
                     coverage run -m robot.run --outputdir results bilen.robot
                     coverage xml -o coverage.xml
                     '''
-                }
-            }
-        }
-    }
-}
