@@ -12,7 +12,7 @@ pipeline {
             steps {
                 dir('project') {
                     powershell '''
-                    & "C:\\Users\\xasan\\OneDrive\\Dokument\\mvn\\apache-maven-3.9.6\\bin\\mvn" clean install
+                    & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" clean install
                     '''
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 dir('project') {
                     powershell '''
-                    & "C:\\Users\\xasan\\OneDrive\\Dokument\\mvn\\apache-maven-3.9.6\\bin\\mvn" test
+                    & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" test
                     '''
                 }
             }
@@ -31,7 +31,6 @@ pipeline {
         stage('Post Test') {
             steps {
                 jacoco(execPattern: '**/target/jacoco.exec')
-                junit '**/target/surefire-reports/*.xml'
             }
         }
 
@@ -39,18 +38,18 @@ pipeline {
             steps {
                 dir('Selenium') {
                     powershell '''
-                    & "C:\\Users\\xasan\\OneDrive\\Dokument\\mvn\\apache-maven-3.9.6\\bin\\mvn" robotframework:run
+                    & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" robotframework:run
                     '''
                 }
             }
         }
 
-       stage('Code Coverage') {
+        stage('Code Coverage') {
             steps {
                 dir('Selenium') {
                     powershell '''
-                    coverage run -m robot.run --outputdir results bilen.robot
-                    coverage xml -o coverage.xml
+                    & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" coverage run -m robot.run --outputdir results bilen.robot
+                    & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" coverage xml -o coverage.xml
                     '''
                 }
             }
