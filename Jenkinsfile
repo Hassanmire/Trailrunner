@@ -27,32 +27,27 @@ pipeline {
                 }
             }
         }
-
+        
         stage('Post Test') {
             steps {
                 jacoco(execPattern: '**/target/jacoco.exec')
             }
         }
-
+        
         stage('Run Robot') {
             steps {
                 dir('Selenium') {
                     powershell '''
-                    & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" robotframework:run
+                    & "C:\\Users\\xasan\\PycharmProjects\\pythonProject\\.venv\\Scripts\\robot.exe" --outputdir results bilen.robot
                     '''
                 }
             }
         }
+    }
 
-        stage('Code Coverage') {
-            steps {
-                dir('Selenium') {
-                    powershell '''
-                    & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" coverage run -m robot.run --outputdir results bilen.robot
-                    & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" coverage xml -o coverage.xml
-                    '''
-                }
-            }
+    post {
+        always {
+            step([$class: 'JUnitResultArchiver', testResults: 'project/target/surefire-reports/*.xml'])
         }
     }
 }
