@@ -1,4 +1,4 @@
-pipeline {
+ppipeline {
     agent any
 
     stages {
@@ -30,7 +30,7 @@ pipeline {
         
         stage('Post Test') {
             steps {
-                jacoco(execPattern: '**/target/jacoco.exec')
+                jacoco(execPattern: '**/target/*.exec, **/jacoco.exec')
             }
         }
         
