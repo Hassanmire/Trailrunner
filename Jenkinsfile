@@ -27,6 +27,12 @@ pipeline {
       }
     }
 
+    stage('Post Test') {
+      steps {
+        
+      }
+    }
+
     stage('Run Robot') {
       steps {
         dir('Selenium') {
