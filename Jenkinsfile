@@ -28,7 +28,8 @@ pipeline {
     }
 
     stage('Post Test') {
-      steps {
+  steps {
+    jacoco(execPattern: '**/target/jacoco.exec')
         
       }
     }
