@@ -8,7 +8,7 @@ Suite Teardown    Close All Browsers
 ${BASE_URL}        https://rental2.infotiv.net/webpage/html/gui/index.php
 ${USERNAME}        hmire007@gmail.com
 ${PASSWORD}        hyrbil
-${SPEED}           0.2
+${SPEED}           0
 
 
 
