@@ -31,6 +31,7 @@ Ange datum för bokning
     [Tags]              Datumval
      Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}    ${PASSWORD}
+
     Input Text    id=start    2024-04-28
     Input Text    id=end    2024-04-29
     Click Button     id=continue
@@ -42,6 +43,7 @@ Välj en bil för bokning
     [Tags]            bilval
      Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}   ${PASSWORD}
+
     Ange datum     2024-04-28   2024-04-29
     Wait Until Element Is Visible    css=.carRow
     ${row}=  Get WebElement  xpath=//tr[contains(@class, "carRow")]
@@ -54,6 +56,7 @@ Slutför bokning med betalningsinformation
     [Tags]        betalkort inmatning
     Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}    ${PASSWORD}
+
     Ange datum  2024-04-28   2024-04-29
     Välj bil    //tr[contains(@class, "carRow")]   //input[@id="bookQ7pass5"]
 
