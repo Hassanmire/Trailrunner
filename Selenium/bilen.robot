@@ -6,7 +6,7 @@ Suite Teardown    Close All Browsers
 
 *** Variables ***
 ${BASE_URL}        https://rental2.infotiv.net/webpage/html/gui/index.php
-${USERNAME}        hmire007@gmail.com
+${USERNAME}        xasanmire2016@gmail.com
 ${PASSWORD}        hyrbil
 ${SPEED}           0
 
@@ -32,8 +32,8 @@ Ange datum för bokning
      Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}    ${PASSWORD}
 
-    Input Text    id=start    2024-04-28
-    Input Text    id=end    2024-04-29
+    Input Text    id=start    04-08
+    Input Text    id=end    04-09
     Click Button     id=continue
     Page Should Contain Element    css=#questionText    When do you want to make your trip?
     Close Browser
@@ -44,7 +44,7 @@ Välj en bil för bokning
      Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}   ${PASSWORD}
 
-    Ange datum     2024-04-28   2024-04-29
+    Ange datum     04-08   04-09
     Wait Until Element Is Visible    css=.carRow
     ${row}=  Get WebElement  xpath=//tr[contains(@class, "carRow")]
     Click Button  xpath=//input[@id="bookQ7pass5"]
@@ -57,7 +57,7 @@ Slutför bokning med betalningsinformation
     Open Browser    ${BASE_URL}   headlesschrome
     Logga in    ${USERNAME}    ${PASSWORD}
 
-    Ange datum  2024-04-28   2024-04-29
+    Ange datum  04-08   04-09
     Välj bil    //tr[contains(@class, "carRow")]   //input[@id="bookQ7pass5"]
 
     Input Text    css=#cardNum    1234567890123456
@@ -77,7 +77,7 @@ Avboka bil
 
     Open Browser    ${BASE_URL}    headlesschrome
     Logga in    ${USERNAME}    ${PASSWORD}
-    Ange datum    2024-04-28   2024-04-29
+    Ange datum    04-08   04-09
     Välj bil    //tr[contains(@class, "carRow")]   //input[@id="bookQ7pass5"]
 
 
@@ -113,8 +113,8 @@ Negativt testfall: Ogiltiga bokningsdatum
     [Documentation]    Testar att försöka ange ogiltiga datum för bokning
     [Tags]             Negativt_test
     Open Browser       ${BASE_URL}    headlesschrome
-    Input Text         id=start    2024-03-29
-    Input Text         id=end    2024-03-28
+    Input Text         id=start    04-08
+    Input Text         id=end    04-09
     Click Button       id=continue
     Page Should Not Contain Element    css=span.error-message
     Close Browser
