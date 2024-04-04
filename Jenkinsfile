@@ -3,7 +3,6 @@ pipeline {
 
   environment {
     ROBOT_PATH = "C:\\Users\\xasan\\PycharmProjects\\pythonProject\\.venv\\Scripts\\robot.exe"
-    SELENIUM_PATH = "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Hassanm\\Selenium"
   }
 
   stages {
@@ -28,38 +27,32 @@ pipeline {
     }
 
     stage('Post Test') {
-  steps {
-    jacoco(execPattern: '**/target/jacoco.exec')
-        
+      steps {
+        jacoco(
+          execPattern: 'target/*.exec',
+          classPattern: 'target/classes',
+          sourcePattern: 'src/main/java',
+          exclusionPattern: 'src/test*'
+        )
+        junit testResults: 'project/target/surefire-reports/**/*.xml'
       }
     }
 
     stage('Run Robot') {
       steps {
         dir('Selenium') {
-          powershell '''
-            & "$env:ROBOT_PATH" --outputdir results --report report.html --log log.html "$env:SELENIUM_PATH\\bilen.robot"
-          '''
+          powershell """
+            \$env:PATH += ';C:\\Users\\xasan\\PycharmProjects\\pythonProject\\.venv\\Scripts'
+            & \"\${env:ROBOT_PATH}\" --outputdir results --report report.html --log log.html bilen.robot
+          """
         }
-      }
-    }
-
-    stage('Publish Report') {
-      steps {
-        publishHTMLReport target: 'results/report.html'
-      }
-    }
-
-    stage('Archive Robot Reports') {
-      steps {
-        archiveArtifacts artifacts: 'results/*.xml, results/*.html'
       }
     }
   }
 
   post {
     always {
-      step([$class: 'JUnitResultArchiver', testResults: 'project/target/surefire-reports/*.xml'])
+      robot outputPath: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Hassanm\\Selenium', passThreshold: 80.0, unstableThreshold: 70.0, onlyCritical: false
     }
   }
 }
