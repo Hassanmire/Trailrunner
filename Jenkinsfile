@@ -52,7 +52,12 @@ pipeline {
 
   post {
     always {
-      robot outputPath: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Hassanm\\Selenium', passThreshold: 80.0, unstableThreshold: 70.0, onlyCritical: false
+      robot(
+        outputPath: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Hassanm\\Selenium/results',
+        passThreshold: 80.0,
+        unstableThreshold: 70.0,
+        onlyCritical: false
+      )
     }
   }
 }
