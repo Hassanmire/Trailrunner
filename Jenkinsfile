@@ -10,7 +10,7 @@ pipeline {
       steps {
         dir('project') {
            powershell '''
-            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn complie" mvn compile
+            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn " mvn compile
           '''
         
         }
@@ -20,7 +20,8 @@ pipeline {
     stage('Test') {
       steps {
         dir('project') {
-          bat 'mvn test's
+           & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn " mvn test
+          '''
         }
       }
     }
