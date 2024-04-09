@@ -9,9 +9,7 @@ pipeline {
     stage('Build') {
       steps {
         dir('project') {
-          powershell '''
-            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" clean install
-          '''
+          sh 'mvn complie'
         }
       }
     }
@@ -19,9 +17,7 @@ pipeline {
     stage('Test') {
       steps {
         dir('project') {
-          powershell '''
-            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" test
-          '''
+          sh 'mvn test's
         }
       }
     }
