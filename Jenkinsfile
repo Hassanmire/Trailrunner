@@ -9,7 +9,7 @@ pipeline {
     stage('Build') {
       steps {
         dir('project') {
-          sh 'mvn complie'
+          bat 'mvn complie'
         }
       }
     }
@@ -17,7 +17,7 @@ pipeline {
     stage('Test') {
       steps {
         dir('project') {
-          sh 'mvn test's
+          bat 'mvn test's
         }
       }
     }
