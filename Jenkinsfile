@@ -9,7 +9,10 @@ pipeline {
     stage('Build') {
       steps {
         dir('project') {
-          bat 'mvn complie'
+           powershell '''
+            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn complie" mvn compile
+          '''
+        
         }
       }
     }
