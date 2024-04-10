@@ -9,9 +9,9 @@ pipeline {
     stage('Build') {
       steps {
         dir('project') {
-          bat '''
-            "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" clean install
+
           '''
+        
         }
       }
     }
@@ -19,8 +19,7 @@ pipeline {
     stage('Test') {
       steps {
         dir('project') {
-          bat '''
-            "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" test
+
           '''
         }
       }
