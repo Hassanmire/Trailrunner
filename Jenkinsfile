@@ -9,8 +9,7 @@ pipeline {
     stage('Build') {
       steps {
         dir('project') {
-           powershell '''
-            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn " mvn compile
+
           '''
         
         }
@@ -20,7 +19,7 @@ pipeline {
     stage('Test') {
       steps {
         dir('project') {
-           & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn " mvn test
+
           '''
         }
       }
@@ -41,10 +40,10 @@ pipeline {
     stage('Run Robot') {
       steps {
         dir('Selenium') {
-          powershell """
-            \$env:PATH += ';C:\\Users\\xasan\\PycharmProjects\\pythonProject\\.venv\\Scripts'
-            & \"\${env:ROBOT_PATH}\" --outputdir results --report report.html --log log.html bilen.robot
-          """
+          bat '''
+            set PATH=%PATH%;C:\\Users\\xasan\\PycharmProjects\\pythonProject\\.venv\\Scripts
+            "%ROBOT_PATH%" --outputdir results --report report.html --log log.html bilen.robot
+          '''
         }
       }
     }
