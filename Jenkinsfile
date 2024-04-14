@@ -10,7 +10,7 @@ pipeline {
       steps {
         dir('project') {
           powershell '''
-            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" clean install
+            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn.cmd" clean install
           '''
         }
       }
@@ -20,7 +20,7 @@ pipeline {
       steps {
         dir('project') {
           powershell '''
-            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn" test
+            & "C:\\Users\\xasan\\Documents\\mvn\\apache-maven-3.9.6\\bin\\mvn.cmd" -DforkCount=0 test
           '''
         }
       }
@@ -34,7 +34,11 @@ pipeline {
           sourcePattern: 'src/main/java',
           exclusionPattern: 'src/test*'
         )
-        junit testResults: 'project/target/surefire-reports/**/*.xml'
+      }
+      post {
+        always {
+           junit testResults: 'project/target/surefire-reports/**/*.xml'
+        }
       }
     }
 
@@ -43,7 +47,7 @@ pipeline {
         dir('Selenium') {
           powershell """
             \$env:PATH += ';C:\\Users\\xasan\\PycharmProjects\\pythonProject\\.venv\\Scripts'
-            & \"\${env:ROBOT_PATH}\" --outputdir results --report report.html --log log.html bilen.robot
+            & \"\${env:ROBOT_PATH}\" --outputdir results --report NONE --log NONE bilen.robot
           """
         }
       }
