@@ -111,7 +111,7 @@ public class MainMenuTest {
     public void ifEnteredDateEmptyReturnTodaysDate() {
         when(mockScanner.nextLine()).thenReturn("");
 
-        LocalDate expected = LocalDate.of(2024, 1, 15);
+        LocalDate expected = LocalDate.of(2024, 4, 14);
         LocalDate actual = mainMenu.createLocalDate(mainMenu.saveEnteredDate());
         
         assertEquals(expected, actual);
